@@ -1,0 +1,45 @@
+'use client'
+
+import { createContext, useContext, useState, useEffect } from 'react'
+
+const ThemeContext = createContext({
+  theme: 'dark',
+  toggleTheme: () => {},
+})
+
+export function useTheme() {
+  return useContext(ThemeContext)
+}
+
+export default function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('dark')
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark'
+    setTheme(savedTheme)
+    document.documentElement.setAttribute('data-theme', savedTheme)
+  }, [])
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(newTheme)
+    localStorage.setItem('portfolio-theme', newTheme)
+    document.documentElement.setAttribute('data-theme', newTheme)
+  }
+
+  if (!mounted) {
+    return (
+      <ThemeContext.Provider value={{ theme: 'dark', toggleTheme }}>
+        {children}
+      </ThemeContext.Provider>
+    )
+  }
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  )
+}
