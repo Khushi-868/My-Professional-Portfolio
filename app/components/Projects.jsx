@@ -64,7 +64,7 @@ const featuredProjects = [
       'MERN stack book-sharing application with JWT auth, role-based access, and Admin Dashboard backed by RESTful APIs.',
     tech: ['MongoDB', 'Express.js', 'React.js', 'Node.js'],
     demo: 'https://booknest-online-store.onrender.com/',
-    repo: 'https://github.com/Khushi-868',
+    repo: 'https://github.com/Khushi-868/Booknest-online-store',
     image: '/booknest.png',
   },
 ]
