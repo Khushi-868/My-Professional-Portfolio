@@ -16,7 +16,7 @@ const cardVariants = {
 const skillGroups = [
   {
     category: 'Languages',
-    items: ['C', 'C++', 'JavaScript', 'TypeScript'],
+    items: ['C', 'C++', 'Java', 'JavaScript', 'TypeScript'],
     icon: '📝',
   },
   {
